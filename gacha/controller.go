@@ -11,5 +11,6 @@ func GachaIndex(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
 }
 
 func GachaGet(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
-
+	res := GachaExecute(ps.ByName("userID"))
+	fmt.Fprintf(w, "%s\n", res)
 }

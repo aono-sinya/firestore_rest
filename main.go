@@ -4,6 +4,7 @@ import (
 	"cloud.google.com/go/firestore"
 	"context"
 	"encoding/json"
+	"firestore_rest/gacha"
 	"firestore_rest/models"
 	"fmt"
 	"github.com/julienschmidt/httprouter"
@@ -71,6 +72,9 @@ func main() {
 	router := httprouter.New()
 	router.POST("/", Index)
 	router.GET("/user/:userID", User)
+
+	router.GET("/gacha", gacha.GachaIndex)
+	router.GET("/gacha/:userID", gacha.GachaGet)
 
 	log.Fatal(http.ListenAndServe(":8081", router))
 }
