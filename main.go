@@ -4,6 +4,7 @@ import (
 	"cloud.google.com/go/firestore"
 	"context"
 	"encoding/json"
+	"firestore_rest/condGacha"
 	"firestore_rest/gacha"
 	"firestore_rest/models"
 	"fmt"
@@ -75,6 +76,8 @@ func main() {
 
 	router.GET("/gacha", gacha.GachaIndex)
 	router.GET("/gacha/:userID", gacha.GachaGet)
+
+	router.GET("/cond/gacha/:userID", condGacha.GachaGet)
 
 	log.Fatal(http.ListenAndServe(":8081", router))
 }
